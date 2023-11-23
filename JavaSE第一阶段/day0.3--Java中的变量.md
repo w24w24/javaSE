@@ -601,6 +601,20 @@ s.charAt(1); // 输出：2
 
 假设你不指定下标，则字符串的第一个字符默认被取出！
 
+#### 如果想要将char类型转换为String语句：只需要像基本数据类型一样使用+号进行拼接就可以了
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        char c = '谭';
+        String str = c + "";
+        System.out.println(str);
+    }
+}
+```
+
+
+
 
 
 # 十六、String转基本数据类型细节？
