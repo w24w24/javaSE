@@ -26,7 +26,7 @@ public class Hello{
 
 5、\ \：一个 \
 
-6、\r：一个回车【注意：\r 会回到本行的最前面，并且用\r后面的字符替换掉首行开始的字符】
+6、\r：一个回车【注意：\r 会回到本行的最前面，并且用\r后面的字符替掉换前面的所有字符】
 
 ```java
 public class Hello{
@@ -102,3 +102,34 @@ Hello.java的意思是指生成这个.java文件中的doc注释
 4、Java的源文件使用utf-8编码进行保存
 
 5、代码编写分为次行风格和行尾风格，但是推荐使用行尾风格
+
+
+
+# 四、悬挂Javadoc注释【Dangling Javadoc Comment】？
+
+产生原因：在Java的开发过程中，我们常常会使用Javadoc注释来为代码提供文档说明。然而，有时候我们可能会忘记及时更新这些注释，或者删除了相应的代码却忘记删除注释，导致出现了悬挂Javadoc注释。
+
+示例：不会产生悬挂javadoc注释
+
+```java
+/**
+ * @author 谭磊
+ * @version 1.0
+ */
+public class Test {
+    public static void main(String[] args) {
+        ....
+    }
+}
+```
+
+示例：会产生悬挂javadoc注释
+
+```java
+/**
+ * @author 谭磊
+ * @version 1.0
+ */
+```
+
+#### 也就是说，当你使用javadoc注释的时候，没有在javadoc注释之后有内容/代码，就会产生悬挂javadoc注释

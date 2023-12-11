@@ -114,7 +114,6 @@ public class BinaryChange {
         System.out.println(a); // 输出：1
     }
 }
-
 ```
 
 3、实际示例：请你求出~2的值？【补码是负数，需要逆转为原码】

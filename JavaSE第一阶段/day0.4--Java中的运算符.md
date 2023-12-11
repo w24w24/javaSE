@@ -182,9 +182,7 @@ i = i + 1;
 i = temp;
 ```
 
-#### 简要理解：你有一块钱，放到了钱包里去。之后你又有了一块钱，但是没有放到钱包里面去，那么钱包里还是一块钱！！！
-
-#### 其实最后输出的值就是临时变量temp的值
+#### 简要理解：不要将i看作是自己，看作是其它的变量，输出的也是其它变量，最后输出的值就是临时变量temp的值
 
 
 
@@ -247,7 +245,7 @@ public class Test {
 
 2、需求：定义一个变量保存华氏温度 234.5，华氏温度转换摄氏温度的公式是：
 
-5 / 9*（华氏温度 - 100），请求出华氏温度对应的摄氏温度。
+5 / 9*（华氏温度 - 32），请求出华氏温度对应的摄氏温度。
 
 ```
 第一步：明确需求，如上
@@ -270,7 +268,7 @@ public class Test {
 	public static void main(String[] args) {
 		double huaTemperature = 234.5;
 		// 华氏温度转摄氏温度公式：5/9*（摄氏温度-100）
-		double sheTemperature = 5 / 9*(huaTemperature - 100);
+		double sheTemperature = 5 / 9*(huaTemperature - 32);
 		System.out.println("华氏温度对应的摄氏温度是" + sheTemperature); // 输出：0.0
 	}
 }
@@ -462,7 +460,7 @@ public class InverseOperator {
 // 1、为假的情况：
 public class InverseOperator {
 	public static void main(String[] args) {
-		boolean test = (20 > 10) ^ (50 > 30);
+		boolean b = (20 > 10) ^ (50 > 30);
 		System.out.println("b是：" + b); // 输出：false
 	}
 }
@@ -470,7 +468,7 @@ public class InverseOperator {
 // 2、为真的情况：
 public class InverseOperator {
 	public static void main(String[] args) {
-		boolean test = (20 > 10) ^ (50 < 30);
+		boolean b = (20 > 10) ^ (50 < 30);
 		System.out.println("b是：" + b); // 输出：true
 	}
 }
@@ -488,13 +486,13 @@ public class Test {
 		boolean x = true;
 		boolean y = false;
 		short z = 46;
-		if((z++ ==46)&&(y = trur)) {
+		if((z++ ==46)&&(y = true)) {
 			z++;
 		}
 		if((x = false) || (++z == 49)) {
 			z++;
 		}
-		System.out.println("z=" + z);
+		System.out.println("z=" + z); // 50
 }
 ```
 
@@ -723,7 +721,7 @@ public class Test {
 }
 ```
 
-#### 解析：在实际的开发中，为了增强代码的可读性和维护型，避免使用嵌套和复杂度高的写法，如上述中的单挑语句执行
+#### 解析：在实际的开发中，为了增强代码的可读性和维护型，避免使用嵌套和复杂度高的写法，如上述中的单条语句的执行
 
 
 
@@ -737,9 +735,11 @@ public class Test {
 
 #### 梳理小结：只需要有一个大致的印象就可以了，使用多了，就记得了，不用去死记硬背
 
+
+
 1、()、{}等
 
-2、单目运算 + + --
+2、单目运算 ++  --
 
 3、算数运算符
 
