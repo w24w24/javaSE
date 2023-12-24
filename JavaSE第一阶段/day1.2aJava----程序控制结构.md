@@ -672,7 +672,7 @@ while(循环条件){
 
 2、只是4要素放的位置和for循环不一样
 
-示例需求：适用while完成输出10句"我还是像以前一样爱你！"
+示例需求：使用while完成输出10句"我还是像以前一样爱你！"
 
 ```java
 // 化繁为简：就是将总体需求拆分为一个个的小部分去实现
@@ -879,10 +879,11 @@ while(xxx) {
 ```java
 public class Test {
     public static void main(String[] args) {
-        for (int i = 1; i <= 9 ; i++) {
-            for (int j = 1; j <= 9 ; j++) {
-                System.out.println(i + "x" + j + "=" + i*j);
+        for (int i = 1; i <= 9; i++) {          //总共9行
+            for (int j = 1; j <= i ; j++) {     //第 i 行有 j 列
+                System.out.print(i + "*" + j + "=" + (i*j) + "\t"); // \t 制表符
             }
+            System.out.println();               //每一行输出结束后换行
         }
     }
 }
@@ -990,8 +991,408 @@ public class Test{
 
 
 
-# 十七、跳转控制语句break？
+# 十七、跳转控制语句：break？
 
-需求：随机生成一个1—100的数，直到生成97这个数，看看你一共用了几次？
+1、需求：随机生成一个1—100的数，直到生成97这个数，看看你一共用了几次？
 
-提示：使用 (int)(Math.random()*100) + 1
+2、公式提示：使用 (int)(Math.random()*100) + 1
+
+3、用法解析：
+
+```
+Math.random()方法的含义：
+1、在Math类中，有一个生成随机数的random方法
+2、使用这个一个方法生成的随机数字色数据类型是double，生成数字范围在大于等于0.0，小于1.0，即：[0.0,1.0)
+```
+
+4、公式提示解析：
+
+```
+这里为什么要使用Math.random()*100 + 1呢？
+解析：
+1、Math.random()是随机生成[0.0,1.0)之间的随机数字
+2、Math.random()*100是随机生成[0.0,100.0)之间的数字
+3、我们需求是生成[1,100]之间的随机数字，所以使用：Math.random()*100 + 1即可生成所需区间的随机数字
+```
+
+5、需求示例：
+
+```java
+// 随机生成一个1—100的数
+public class Test {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 100; i++) {
+            int randomNumber = (int)(Math.random()*100) + 1;
+            if(randomNumber == 97) {
+                System.out.println("这是在第" + i + "次生成了97");
+                break;
+            }
+            System.out.println("第" + i + "次生成的数字是：" +  randomNumber);
+        }
+    }
+}
+```
+
+#### 注意：一旦遇到break，就退出循环【注意是整个循环】
+
+例如：循环输出1~10之间的数字，当第3次输出的时候，就终止程序
+
+```java
+// 需求：循环输出1~10之间的数字，当第3次输出的时候，就终止程序
+public class Test {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 10; i++) {
+            if(i == 3) {
+                break;
+            }
+            System.out.println("输出了" + i); // 输出：1和2
+            // 为什么不输出3呢？
+            // 因为在i等于3的时候，遇到了break，导致整个for循环都终止了，于是3不会被输出
+        }
+    }
+}
+```
+
+
+
+## 一、break：终止循环的细节和注意事项？
+
+1、break出现在多层嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块
+
+```java
+// 第一层标签label
+lable1:
+for(int i = 0;i < 4;i++) {
+    // 第二层标签label
+	lable:
+	for(int j = 0,j <= 10;j++) {
+		if(j == 2) {
+			break label1;
+		}
+	}
+	System.out.println("i = " + i);
+}
+```
+
+解析：
+
+（1）break语句+标签可以指定退出哪层
+
+（2）label1是标签，由于程序员确定，名字可以自定义
+
+（3）break指定到哪个label就退出最近的循环区域
+
+（4）但是建议是实际的开发中，尽量不要使用标签
+
+（5）如果没有指定break，就默认退出最近的循环体
+
+
+
+# 十八、练习题目？
+
+1、需求：实现登录验证，有3次机会，如果用户名为”丁真“，密码”666“，则提示成功登录，否则提示还剩余几次机会【`这道题是由是由自己完成的`】
+
+```java
+// 需求：实现登录验证
+// 有3次机会
+// 如果用户名为”丁真“，密码”666“，则提示成功登录
+// 否则提示还剩余几次机会
+import java.util.Scanner;
+public class Test {
+    public static void main(String[] args) {
+        Scanner myScanner = new Scanner(System.in);
+
+        for (int i = 3; i >= 0; i--) {
+            String userName = "";
+            int userPassword = 0;
+            // 3次登录次数耗尽，退出登录循环
+            System.out.println("当前登录次数剩余：" + i + "次");
+            if(i == 0) {
+                System.out.println("登录次数已耗尽，请5分钟后重试");
+                break;
+            }
+
+            // 提示用户输入用户名
+            System.out.println("请输入用户名：");
+            if(myScanner.hasNext()) {
+                String userInputName = myScanner.next();
+                // 判断输入的名字是否合法
+                if(userInputName.charAt(0) == '丁' && userInputName.charAt(1) == '真') {
+                    userName = userInputName;
+                }
+            }
+
+            // 提示用户输入密码
+            System.out.println("请输入密码：");
+            if(myScanner.hasNextInt()) {
+                int userInputPassword = myScanner.nextInt();
+                // 判断输入的名字是否合法
+                if(userInputPassword == 666) {
+                    userPassword = userInputPassword;
+                }
+            }
+
+            // 用户名、密码正确，也要退出登录循环
+            if(userName.equals("丁真") && userPassword != 0) {
+                System.out.println("登录成功");
+                break;
+            } else {
+                System.out.println("登录失败，请重试");
+            }
+        }
+    }
+}
+```
+
+#### 涉及到一个字符串方法的比较：equals
+
+1、格式
+
+```java
+String nam = "贾宝玉";
+boolean judge = "林黛玉".equals(name);
+// 也可以使用：boolean judge = name.equals("林黛玉"); 但是推荐使用第一种
+// 为什么推荐第一种呢？答案：因为可以避免空指针【这里暂时不展开讲解】
+```
+
+
+
+# 十九、跳转控制语句：continue？
+
+1、介绍：continue用于结束本次循环，继续执行下一次循环【注意：是结束本次循环】
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if(i == 2) {
+                System.out.println("被跳过了");
+                continue;
+            }
+            System.out.println("我爱你");
+        }
+    }
+}
+```
+
+2、continue出现在多层嵌套的循环体语句中的时候，可以通过标签指定要跳过哪一次层循环，使用方法和前面的break是一样的
+
+3、continue的基本语法：
+
+```java
+{
+    ....
+    continue；
+    ....    
+}
+```
+
+#### 注意：continue跳到出的本次的所有循环，即使是continue后面还有语句，都不会再输出了，直接跳出本次循环！
+
+4、练习题
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        int i = 1;
+        while(i <= 4) {
+            i++;
+            if(i == 2) {
+                continue;
+            }
+            System.out.println("i = " + i); // 输出：3、4、5
+        }
+    }
+}
+```
+
+# 二十、跳转控制语句：return？
+
+1、介绍：return使用在方法中，表示跳出所在的方法，在讲解方法的时候，会详细的介绍，这里我们简单的提一下。注意：如果return写在main方法中，直接退出整个程序，因为main方法是程序的入口
+
+2、注意和break、continue对比起来记忆，就比较好理解了
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if(i == 3) {
+                System.out.println("韩顺平教育" + i);
+                return; // 因为在这里就直接退出了，所以输出2次：hello world、1次韩顺平教育
+            }
+            System.out.println("hello world");
+        }
+        System.out.println("go to");
+    }
+}
+```
+
+
+
+# 二十一、流程控制语句与循环结合练习题？
+
+1、需求：某人有100,0000元，每经过一次路口，需要缴费，规则如下：当现金>5000,0时，每次缴%5；当现金<=5000,0时，每次缴1000。计算这个人可以经过少次路口，要求：使用 while和break完成
+
+```java
+// 某人有100,0000元，每经过一次路口，需要缴费，规则如下：
+// 1、当现金>5000,0时，每次缴%5
+// 2、当现金<=5000,0时，每次缴1000
+// 需求：计算这个人可以经过少次路口，要求：使用 while和break完成
+public class Test {
+    public static void main(String[] args) {
+        double money = 100000;
+        int count = 0;
+        while(true) {
+            if(money > 50000) {
+                money = money - money * 0.05;
+                count++;
+            }else if(money >= 1000) {
+                money -= 1000;
+                count ++;
+            }else {
+                break;
+            }
+        }
+        System.out.println(count);
+        System.out.println("余额还有" + money);
+    }
+}
+// 可以过62次
+// 还剩余：767.497.....
+```
+
+2、需求：需求：实现判断一个整数，属于哪一个范围：大于0、小于0、等于0
+
+```java
+// 需求：实现判断一个整数，属于哪一个范围：大于0、小于0、等于0
+import java.util.Scanner;
+public class Test {
+    public static void main(String[] args) {
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("请输入整数：");
+        if(myScanner.hasNextInt()) {
+            int userInputNumber = myScanner.nextInt();
+            if(userInputNumber > 0) {
+                System.out.println("您输入的：" + userInputNumber + "大于0");
+            }else if(userInputNumber < 0) {
+                System.out.println("您输入的：" + userInputNumber + "小于0");
+            }else {
+                System.out.println("您输入的：" + userInputNumber + "等于0");
+            }
+        }
+    }
+}
+```
+
+3、需求：判断一个年份是否为闰年
+
+```java
+// 需求：判断一个年份是否为闰年
+import java.util.Scanner;
+public class Test {
+    public static void main(String[] args) {
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("请输入年份：");
+        if(myScanner.hasNextInt()) {
+            int userInputYear = myScanner.nextInt();
+            if(userInputYear % 4 == 0) {
+                System.out.println("您输入的：" + userInputYear + "是闰年");
+            }else {
+                System.out.println("您输入的：" + userInputYear + "是平年");
+            }
+        }
+    }
+}
+```
+
+4、需求：判断一个数是否是水仙花数。水仙花数：是指一个3位数，其各个位上数字的立方和等于它本身。例如：153 = 1 * 1 * 1  +  5 * 5 * 5  +  3 * 3 * 3
+
+```java
+// 需求：判断一个数是否是水仙花数
+// 水仙花数：是指一个3位数，其各个位上数字的立方和等于它本身
+// 例如：153 = 1*1*1 + 5*5*5 + 3*3*3
+import java.util.Scanner;
+public class Test {
+    public static void main(String[] args) {
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("请输入水仙花数(3位整数)：");
+        if(myScanner.hasNextInt()) {
+            int userInputNumber = myScanner.nextInt();
+            // 个位数字
+            int ge = userInputNumber % 10;
+            // 十位数字
+            int shi = (userInputNumber/10) % 10;
+            // 百位数字
+            int bai = (userInputNumber/100) % 10;
+            if(userInputNumber ==(ge * ge * ge + shi * shi * shi + bai * bai * bai)) {
+                System.out.println("您输入的" + userInputNumber + "是水仙花数");
+            }else{
+                System.out.println("您输入的" + userInputNumber + "不是水仙花数");
+            }
+        }
+    }
+}
+```
+
+#### 这里涉及到一个取到数字位的方法：
+
+（1）个位、十位、百位、千位...
+
+```java
+int number = 153;
+// 个位
+int gewei = (number/1) % 10;
+// 十位
+int gewei = (number/10) % 10;
+// 百位
+int gewei = (number/100) % 10;
+// 千位
+int gewei = (number/1000) % 10;
+// 3万位
+int gewei = (number/10000) % 10;
+.....
+```
+
+5、需求：输出1~100之间的所有不被5整除的数字，每5个一行
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 统计输出的个数
+        int count = 0;
+        // 输出的数字
+        for (int i = 1; i <= 100; i++) {
+            if(i % 5 != 0) {
+                count++;
+                System.out.print(i + " ");
+                if(count%5 == 0) {
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+```
+
+6、需求：输出a~z小写字母。输出Z~A大写字母【利用ASCII做】
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 输出a~z小写的26个字母
+        for (char c1 = 'a'; c1 <= 'z'; c1++) {
+            System.out.print(c1 + " ");
+        }
+
+        System.out.println();
+
+        // 输出Z~A大写的26个字母
+        for (char c1 = 'Z'; c1 >= 'A';c1--) {
+            System.out.print(c1 + " ");
+        }
+    }
+}
+```
+
+
+
