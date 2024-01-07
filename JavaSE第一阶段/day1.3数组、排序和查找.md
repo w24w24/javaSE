@@ -756,3 +756,338 @@ public class Test {
 ```
 
 #### 注意：这里面涉及到一个很重要的编程思想或者是编程技巧，那就是使用一个标识符来判断这个程序是否执行成功了，如上述例题中的index，如果成功了，就将index更改为i，即数组的下标，如果不成功，则不进行更改
+
+
+
+# 十四、二维数组入门？
+
+二维数组的应用场景：比如我们开发一个五子棋游戏，棋盘就是需要二维数组来进行表示【想象一下棋盘】
+
+1、二维数组示例：请你使用二维数组来输出如下的图形
+
+0 0 0 0 0 0
+
+0 0 1 0 0 0
+
+0 2 0 3 0 0 
+
+ 0 0 0 0 0 0
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 原始数组
+        int[][] arr = {
+                {0,0,0,0,0,0},
+                {0,0,1,0,0,0},
+                {0,2,0,3,0,0},
+                {0,0,0,0,0,0}};
+        // 遍历数组
+        for (int i = 0; i < arr.length; i++) { // 第一层是一维数组
+            for (int j = 0; j < arr[i].length; j++) { // 二维数组里的元素值又是一维数组
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+#### 注意：二维数组中的元素值是一个一维数组
+
+
+
+# 十五、二维数组的使用？
+
+## 一、使用方式1：动态初始化【同时声明和初始化】
+
+```
+语法：类型[][] 数组名 = new 类型[大小][大小]
+示例：int[][] arr = new int[2][3];
+```
+
+1、二维数组在内存中的存在方式和表示方法
+
+![image-20231225224955706](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231225224955706.png)
+
+解析：
+
+```
+1、二维数组也是引用数据类型，所以也是遵循引用的是地址的规则
+2、在栈中，存储变量名arr存放的是地址，这个地址指向的是堆中的数据
+3、因为是二维数组，数组中的元素值又是一维数组，所以在堆中数据的依旧不是具体的值，而是地址，这个地址又指向堆中的另一个地址，在这个地址中，存放的才是具体的值
+```
+
+示例：输出`int[][] arr = new int[ 2 ][ 3 ]`的值，并且将`arr[1][1]`赋值为8
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // twoDimensionalArrays
+        int[][] arr = new int[2][3];
+        arr[1][1] = 8;
+        // 遍历数组
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println(); // 换行
+        }
+    }
+}
+```
+
+## 二、使用方式2：动态初始化【声明和初始化分开】
+
+解析：先声明数组，再初始化数组
+
+```java
+// 声明数组
+int[][] arr;
+// 初始化数组
+arr = new int[][];
+```
+
+#### 既然都是数组的声明和初始化，为什么会有数组的声明、初始化连写和分开这2种形式呢？
+
+解析：在实际开发中，我们有时候并不想直接去初始化数组，而是等待用户有操作的时候才去初始化数组，这个时候就会将数组的声明和初始化分开
+
+## 三、使用方式3：动态初始化—列数不确定
+
+解析：列数不确定的意思是“二维数组中的一维数组的元素值是不确定的”
+
+需求：使用code完成下列需求
+
+|  i/j  | j = 0 | j = 1 | j = 2 |
+| :---: | ----- | ----- | ----- |
+| i = 0 | 1     |       |       |
+| i = 1 | 2     | 2     |       |
+| i = 2 | 3     | 3     | 3     |
+
+解析：创建二维数组，二维数组中的一维数组的元素值会变化
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 创建一个二维数组
+        int[][] arr = new int[3][];
+        /*
+        1、上述创建的二维数组只有3个元素，但是这个3个元素又是一维数组
+        2、而且这3个元素还没有开辟空间，是null
+         */
+        // 给二维数组中的元素值（即一维数组）开辟空间
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new int[i+1];
+            // 开辟完空间之后还需要给一维数组赋值
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = i + 1;
+            }
+        }
+        // 遍历数组
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+## 四、使用方式4：静态初始化
+
+1、语法格式：
+
+```java
+数据类型 数组名[][] = {{值1，值2，值3....}，{值1，值2，值3....}，{值1，值2，值3....}，{}....}；
+```
+
+2、访问：直接使用数组的下标进行访问即可
+
+3、错误示例：类型不匹配，因为二维数组中有元素不是一维数组
+
+```java
+int[][] arr = {{1,2,3},{4,5,6},100}; // 报错，因为100不是一维数组，而是基本数据类型
+```
+
+4、正确示例：类型匹配，二维数组中的元素值都是一维数组
+
+```java
+int[][] arr = {{1,2,3},{4,5,6},100}; // 正确，所有元素值都是一维数组
+```
+
+#### 注意：二维数组中的所有元素值都必须是一维数组，不允许是其它的形式，否则将出现错误
+
+
+
+# 十六、练习题目？
+
+1、需求：需求：遍历该二维数组{{4,6},{1,4,5,7},{-2}}，并且得到这个二维数组的和
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 二维数组的遍历
+        int[][] arr = {{4,6},{1,4,5,7},{-2}};
+        // 需求：遍历该二维数组，并且得到这个二维数组的和
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                sum += arr[i][j];
+            }
+        }
+        System.out.println("数组arr的和是：" + sum);
+    } 
+}
+```
+
+# 十七、杨辉三角？
+
+规律：
+
+1、第一行有一个元素，第n行有n个元素
+
+2、每一行的第一个元素和最后一个元素都是1、
+
+3、从第三行开始，对于非第一个元素和最后一个元素的元素值，有如下规律：不是第一个元素和最后一个元素，这个元素等于前一列位置的元素加前一位元素
+
+```
+arr[i][j] = arr[i-1][j] + arr[i-1][j-1];
+
+// 示例:不是第一个元素和最后一个元素，这个元素等于前一列位置的元素加前一位元素
+
+1	
+1	1	
+1	2	1	
+1	3	3	1	
+1	4	6	4	1	
+1	5	10	10	5	1	
+1	6	15	20	15	6	1	
+1	7	21	35	35	21	7	1	
+1	8	28	56	70	56	28	8	1	
+1	9	36	84	126	126	84	36	9	1
+```
+
+代码示例：
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 杨辉三角
+        int[][] yangHui = new int[10][];
+        for (int i = 0; i < yangHui.length; i++) {
+            // 给一维数组开空间
+            yangHui[i] = new int[i+1];
+            // 给一维数组赋值
+            for (int j = 0; j < yangHui[i].length; j++) {
+                // 每行的第一个元素和最后一个元素都是1
+                if(j == 0 || j == yangHui[i].length - 1) {
+                    yangHui[i][j] = 1;
+                }else { // 否则就是中间的元素
+                    // 中间的元素等于上一列的同位置 元素加前一个元素
+                    yangHui[i][j] = yangHui[i-1][j] + yangHui[i-1][j-1];
+                }
+            }
+        }
+        // 输出
+        for (int i = 0; i < yangHui.length; i++) {
+            for (int j = 0; j < yangHui[i].length; j++) { // 遍历输出这一行之后
+                System.out.print(yangHui[i][j] + "\t");
+            }
+            System.out.println(); // 换行
+        }
+    }
+}
+```
+
+
+
+# 十八、二维数组的使用细节和注意事项？
+
+1、一维数组的声明方式
+
+```java
+int[] oneDimensional = new int[];
+// 或者
+int oneDimensional[] = new int[];
+```
+
+2、二维数组的声明方式
+
+```java
+int[][] twoDimensional = new int[][];
+// 或者
+int[] twoDimensional[] = new int[][];
+// 或者
+int twoDimensional[][] = new int[][];
+```
+
+3、二维数组实际上是由多个一维数组组成的，它的各个一维数组的长度可以相同，也可以不相同。比如：map [ ] [ ] = {{1,2},{3,4,5},{6,7,8,9}}，其中map[0]是含有2个元素的一维数组，map[1]是含有3个元素的一维数组，我们将这种称之为列数不等的二维数组
+
+```java
+// 列数不等的二维数组
+int map[][] = {{1,2},{3,4,5},{6,7,8,9}};
+```
+
+
+
+# 十九、二维数组练习？
+
+示例：声明int[]x, y[];，下面选项可以通过编译的是
+
+```java
+int[]x,y[];
+// 解析上面的int[]x,y[]的含义
+int[]x; // 一维数组
+int[]y[]; // 二维数组
+```
+
+示例：String [] str = new String{"a","b","c"}的写法是否是正确的?
+
+```java
+// 这里考察的是new的特征
+new是用来定义数组的长度的，如果有具体的值了，就不能使用new了！！
+简单理解：new String{"a","b","c"}和前面的数组类型不匹配
+// 如果依旧想要使用这种方法，就需要像下面这样写
+String [] str = new String[]{"a","b","c"};
+```
+
+示例：String [] str = new String[3]{"a","b","c"}的写法是否是正确的?
+
+```java
+注意：在使用上述方式进行静态初始化数组的时候，不需要给具体的数值3，因为这个数值是编译器自动进行编译的，不需要手动给上去！假如明确给出之后，会直接报错！
+```
+
+1、给这个数组{10,12,45,90}增加一个元素23，使得其依旧呈升序排列
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        int[] arr = {10,12,45,90};
+        int insertNum = -1;
+        int index = -1;
+        // 定位
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] >= insertNum) {
+                index = i;
+                break;
+            }
+        }
+        // 扩容
+        int[] newArr = new int[arr.length+1];
+        for (int i = 0,j = 0; i < newArr.length; i++) {
+            if(index != i) {
+                newArr[i] = arr[j];
+                j++;
+            }else {
+                newArr[i] = insertNum;
+            }
+        }
+        arr = newArr;
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
