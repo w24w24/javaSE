@@ -818,4 +818,357 @@ class MyTools {
 }
 ```
 
-2、我在测试git分支
+2、需求：编写一个方法copyPerson，可以复制一个Person对象，返回复制的对象【要求：clone对象之后，得到的新对象和原来的对象是两个独立的对象，只是它们的属性相同】<span style="color:red">★★★★★★</span>
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        Person p = new Person();
+        p.name = "TheShy";
+        p.age = 23;
+
+        MyTools myTools = new MyTools();
+        Person p1 = myTools.copyPerson(p);
+
+        System.out.println("p的属性值 age = " + p.age + "\np的属性值 name = " + p.name);
+        System.out.println("==============================");
+        System.out.println("p1的属性值 age = " + p1.age + "\np1的属性值 name = " + p1.name);
+    }
+}
+
+class MyTools {
+    public Person copyPerson(Person p) {
+        // 新建一个对象
+        Person newP = new Person();
+        newP.name = p.name; // 把原来对象的名字赋给p2.name
+        newP.age = p.age; // 把原来对象的年龄赋给p2.age
+        newP.name = "李相赫";
+        newP.age = 27;
+        return newP; // 将这个对象返回出去
+    }
+}
+class Person {
+    String name;
+    int age;
+}
+```
+
+
+
+# 十三、方法递归调用？★★★★★★
+
+1、基本介绍：递归就是方法自己调用自己，而且在每次调用的时候传入不同的变量【递归有助于编程者解决复杂性问题，同时可以让代码变得更加简洁】
+
+#### <span style="color:red">递归调用的本质：就是方法的调用</span>
+
+语法格式如下：
+
+```java
+// 这是一个方法
+class Person{
+    public int print(int number1,int number2) {
+        // 这是很多的语句
+        .....
+        // 这是方法自己调用自己
+        print(参数，参数);
+    }
+}
+```
+
+2、递归可以解决什么问题？
+
+解析：
+
+（1）各种数学问题，比如：8皇后问题，汉诺塔，阶乘问题，迷宫问题，球和篮子的问题(google编程大赛)；
+
+（2）各种算法中也会使用到递归，比如：快排、归并排序、二分查找、分治算法等
+
+（3）将用栈解决的问题【使用了递归之后，会使得代码非常的简洁】
+
+# 十四、递归执行机制？★★★★★★
+
+#### <span style="color:red">注意：递归执行的时候，每一次都会完整的执行一遍方法，注意是完整的执行一遍</span>
+
+示例：打印问题
+
+1、图片内存分析
+
+![image-20240121181037783](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240121181037783.png)
+
+2、代码分析
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        T t = new T();
+        t.test(4); // 输出：2
+    }
+}
+// 递归方法
+class T {
+    public void test(int n) {
+        if(n > 2) {
+            test(n - 1);
+        }
+        System.out.println("n = " + n);
+    }
+}
+```
+
+解析：
+
+（1）先在栈中执行main主方法，创建一个对象T t = new T()，会在队中开辟一个空间，并且这个空间会有一个地址，这个地址会被t指向，这里创建对象就结束了。然后执行t.test(4)
+
+（2）因为是方法的调用，所以会在main主方法之外再开辟一个栈空间来执行test方法，因为使用了递归，也就是方法自己调用自己，所以当test每一次递减的时候，都会新开一个栈空间来执行test方法
+
+（3）当所有的递归函数结束调用的时候，产生的栈空间都会被销毁，从而重新进入main主方法中进行执行
+
+（4）当main方法中的所有语句都执行完毕的时候，整个程序就退出执行了
+
+
+
+示例：阶乘问题
+
+1、图片同上一致
+
+![image-20240123204707854](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240123204707854.png)
+
+2、代码分析
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        T t = new T();
+        int res = t.factorial(5);
+        System.out.println(res);
+    }
+}
+// 递归方法
+class T {
+    public int factorial(int n) {
+        if(n == 1) {
+            return 1;
+        }else {
+            return factorial(n - 1) * n;
+        }
+    }
+}
+```
+
+#### <span style="color:red">解析：</span>
+
+（1）先在main方法中创建了一个对象，这个对象在创建的时候就在堆中开辟了一个空间
+
+（2）接着执行了t.factorial(5)，因为是调用了方法，所以会重新开辟一个空间来执行这个方法
+
+（3）在main主方法中，我们传递了一个实际参数5，在执行factorial方法的时候，会去新开一个栈来执行方法。代码开始进行判断，因为不符合if语句，所以会执行else中的代码块
+
+（4）遇到else中的方法自己调用自己，又会接着再去开辟一个空间，再进行判断，依旧是else中的代码，又遇到方法自己调用自己，所以这个时候再开一个栈来执行
+
+（5）当n的值符合if语句中的值的时候，就会将这个方法进行返回给调用者【注意：这里的调用者就是一层一层传递下来的方法调用】，所以递归会形成如下形式：
+
+1的递归：1
+
+2的递归：1*2
+
+3的递归：1 * 2 * 3
+
+........
+
+#### <span style="color:red">自主总结：</span>
+
+方法的调用：就是使用原先定义好的方法。在使用方法的时候，可以往里面传入参数，也可以不传入参数，这一切需要取决于方法在定义的时候是否定义了形式参数，如果定义了，就必须要传入参数，没有定义则不需要传入参数
+
+方法的返回值：其实就是谁使用了这个函数，就将这个函数传递给谁【这个地方要和原来理解的区分开，并不是单纯的创建一个变量来接收方法，就认为返回值就是给方法！这个变量的作用只是为了更好的使用方法的返回值而定义的】
+
+#### 方法有很多的变化形式，需要弄懂方法在堆和栈中的执行和创建，这样理解起来就不会有困难
+
+#### <span style="color:red">自主总结：</span>
+
+（1）执行一个独立的方法的时候，就创建一个新的受保护的独立空间(栈空间)
+
+（2）方法的局部变量是独立的，不会相互影响，比如n变量
+
+（3）如果方法中使用的是引用类型变量(比如：数组)，就会共享该引用数据类型的数据
+
+（4）递归必须向退出递归的条件逐渐逼近(也就是我们在循环语句中使用的条件)，否则就是无限的递归，无限递归就会出现栈溢出：StackOverflowError【也叫做“死递归”】
+
+（5）当一个方法执行完毕，或者是遇到return，就会返回。返回的规则是：谁调用<span style="color:red">【即谁创建了这个栈，方法的返回值就返回给谁】</span>，就将结果返回给谁，同时当方法执行完毕或者返回时，该方法也就执行完毕【也就是系统将自动销毁这个栈，释放栈空间出来】
+
+
+
+# 十五、使用递归斐波那契—递归练习题？
+
+1、需求：给你一个整数n，请你使用递归的方式求出斐波那契数
+
+斐波那契数规则：1，1，2，3，5，8，13....
+
+（1）当n的值是1的时候，斐波那契数是1
+
+（2）当n的值是2的时候，斐波那契数是1 
+
+（3）当n的值大于等于的时候，斐波那契数是前两个数的和
+
+<span style="color:red">这里就是一个递归的思路</span>
+
+2、代码示例
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 创建对象
+        Fibonacci fibonacci = new Fibonacci();
+        int number = 7;
+        int res = fibonacci.fibonacci(-1);
+        if(res != -1) {
+            System.out.println("当数字是" + number + "的时候，对应的斐波那契数是：" + res);
+        }
+    }
+}
+// 斐波那契类
+class Fibonacci {
+    public int fibonacci(int n) {
+        if(n >= 1){
+            if(n == 1 || n == 2) {
+                return 1;
+            }else {
+                return fibonacci(n-1) + fibonacci(n-2);
+            }
+        }else {
+            System.out.println("输入的值必须大于等于1");
+            // 这里必须给返回值，否则会报错，给-1的返回值是因为方法要求的类型是int
+            return -1;
+        }
+    }
+}
+```
+
+2、需求：猴子吃桃子，有一堆桃子，猴子第一天吃了其中的一半，并再多吃了1个！以后每天猴子都吃其中的一半，然后再多吃一个。当到第10天的时候，想再吃时（即还没吃），发现只有一个桃子了。问：最初总共有几个桃子？
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        Fibonacci fibonacci = new Fibonacci();
+        int day = 1;
+        int peachNum = fibonacci.fibonacci(day);
+        // 因为上面的peachNum调用了fibonacci.fibonacci()，所以会有返回值
+        // 因此这里的peachNum != -1 就是类中的else返回回来的值，不要理解错了
+         if(peachNum != -1) {
+             System.out.println("第" + day + "天桃子有" + peachNum + "个");
+         }
+    }
+}
+// Fibonacci类
+class Fibonacci {
+    public int fibonacci(int day) {
+        if(day == 10) { // 第10天只有一个桃子
+            return 1;
+        }else if (day >= 1 && day <= 9) {
+            return (fibonacci(day + 1) + 1)*2;
+        }else {
+            System.out.println("输入的天数有误");
+            return -1;
+        }
+    }
+}
+```
+
+#### <span style="color:red">总结：</span>
+
+（1）递归就是找规律，然后让方法自己调用自己实现一些想要实现的功能
+
+（2）注意使用方法的时候，如果让方法有返回值，可以去利用这个返回值在main主方法中作鉴权
+
+（3）写一段代码的时候，一定要分析需求，这个需求不一定是自己想的，也可以去网络上寻找相关的想法，或者是借助AI，不必一直为难自己去想，这样会阻止自己的学习过程和学习目标
+
+#### 注意：一定要进行代码分析，分析完毕，使用什么技术，使用什么方式写代码都是必须了然于胸
+
+# 十六、老鼠出迷宫？
+
+1、需求：建立一个棋盘，使用二维数组，让老鼠出迷宫
+
+2、代码示意，如下：
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        // 1、建立墙壁，一个8行7列的墙壁wall
+        int[][] wall = new int[8][7];
+        // 最上面的一层、最后面的一层都是墙壁，使用1来表示
+        for (int i = 0; i < 7; i++) {
+            wall[0][i] = 1;
+            wall[7][i] = 1;
+        }
+        // 左右两边也是墙壁,使用1来表示
+        for (int i = 0; i < 8; i++) {
+            wall[i][0] = 1;
+            wall[i][6] = 1;
+        }
+            wall[3][1] = 1;
+            wall[3][2] = 1;
+        // 地图情况
+        for (int i = 0; i < wall.length; i++) {
+            for (int j = 0; j < wall[i].length; j++) {
+                System.out.print(wall[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // 新建这个对象
+        T t = new T();
+        t.findWay(wall,1,1);
+
+        System.out.println("=========找路的情况如下=========");
+        for (int i = 0; i < wall.length; i++) {
+            for (int j = 0; j < wall[i].length; j++) {
+                System.out.print(wall[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+// 建立一个类，用来帮助老鼠出迷宫
+class T {
+    // 使用递归回溯的思想来解决问题
+    // 思路分析：
+    // 1、如果找到，就返回true，否则返回false
+    // 2、map就是二维数组，即表示迷宫
+    // 3、i，j就是老鼠的位置，相当于x和y，来确定老鼠的位置
+    // 4、因为我们是使用递归找路，所以先规定map数组的的各个值的含义
+    // 5、0表示可以走，1表示障碍物，2表示可以走，3表示走过，但是走不通就是死路
+    // 6、当map[6][5] = 2，就说明找到通路了，就可以结束，否则就继续寻找
+    // 7、先确定老鼠的找路策略：下——>右——>上——>左
+    public boolean findWay(int[][] map, int i, int j) {
+        if(map[6][5] == 2) { // 说明已经找到
+            return true;
+        }else {
+            if(map[i][j] == 0) { // 当前这个位置是0，说明可以走
+                // 我们假设可以走通
+                map[i][j] = 2;
+                // 因为可以走通，所以直接使用找路策略
+                // 找路策略：下——>右——>上——>左
+                if(findWay(map,i + 1,j)) { // 先走下
+                    return true;
+                }else if(findWay(map,i,j - 1)) { // 向左
+                    return true;
+                }else if(findWay(map,i,j + 1)) { // 向右
+                    return true;
+                }else if(findWay(map,i - 1,j)) { // 向上
+                    return true;
+                }else {
+                    // 如果上述的方向都无法走通的话，那么就说明这个线路是错的
+                    // 既然是错误的，那么上述的假定路线就是map[i][j] = 2就要被替换
+                    // 替换为map[i][j] = 3，即路线无法走通，而且返回值是false
+                    map[i][j] = 3;
+                    return false;
+                }
+            }else { // map[i][j] = 1,2,3
+                return false;
+            }
+        }
+    }
+}
+```
+
+以后的很多业务都是牵涉到“递归思想的”
