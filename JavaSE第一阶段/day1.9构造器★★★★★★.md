@@ -239,3 +239,10 @@ class Person {
 
 
 
+# 六、创建对象流程详解？
+
+观看平台：b站
+
+链接： https://www.bilibili.com/video/BV1fh411y7R8/?p=245&share_source=copy_web&vd_source=a4a09e1f6e652a4b2b49a6c2a86819cc
+
+集数：244集
