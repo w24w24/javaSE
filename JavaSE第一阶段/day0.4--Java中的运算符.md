@@ -123,7 +123,7 @@ int b = 10;
 int a = b++;
 System.out.println(a); // 输出：10
 System.out.println(b); // 输出：11
-
+0
 // 前置加加：先自增，再赋值——b = b + 1;a = b
 int b = 10;
 int a = ++b;
@@ -542,8 +542,6 @@ a -= b 等价于 a = a - b;
 ```java
 int num = a + b + c
 ```
-
-
 
 2、赋值运算符号的左边，只能是变量；右边可以是变量、表达式、常量值
 
