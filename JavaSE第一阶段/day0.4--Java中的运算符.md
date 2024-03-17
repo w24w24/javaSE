@@ -38,7 +38,7 @@
 
 算数运算符是对数值类型的变量进行运算的，在java程序中使用得非常多
 
-![image-20231023220329635](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231023220329635.png)
+![image-20231023220329635](https://github.com/w24w24/javaSE/blob/master/Images/%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6.png)
 
 重点讲解除法/、模%、加加++
 

@@ -121,7 +121,7 @@ byte n1 = 3;
 
 short n2 = 3;
 
-![image-20231014005238322](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231014005238322.png)
+![image-20231014005238322](https://github.com/w24w24/javaSE/blob/master/Images/%E5%AD%98%E5%82%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 
 
@@ -212,7 +212,7 @@ API（Application programming Interface）是应用程序编程接口，是Java�
 
 1、Java类的组织形式：【简而言之就是java是如何进行文档划分的】
 
-![image-20231016203611070](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231016203611070.png)
+![image-20231016203611070](https://github.com/w24w24/javaSE/blob/master/Images/%E7%B1%BB%E6%96%B9%E6%B3%95%E7%9A%84%E8%B7%AF%E5%BE%84.png)
 
 解析：在JDK中，有无数个包，每一个包下面又包含了接口、类、异常、枚举、错误。而在每一个类中，又包含了字段、构造器（构造方法）、成员方法（方法）
 
