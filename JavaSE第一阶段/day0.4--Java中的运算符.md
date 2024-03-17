@@ -304,7 +304,7 @@ public class Test {
 
 3、以下是关系运算符概览：
 
-![image-20231116193103288](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231116193103288.png)
+![image-20231116193103288](https://github.com/w24w24/javaSE/blob/master/Images/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.png)
 
 
 
@@ -725,7 +725,7 @@ public class Test {
 
 # 十九、运算符优先级？
 
-![image-20231120143553320](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231120143553320.png)
+![image-20231120143553320](https://github.com/w24w24/javaSE/blob/master/Images/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7.png)
 
 1、运算符有不同的有限级，所谓的优先级就是表达式运算中的运算顺序，如右表，上一行运算符号总是优先于下一行
 

@@ -236,7 +236,7 @@ switch解读：
 
 switch流程图：
 
-![image-20231125181247491](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231125181247491.png)
+![image-20231125181247491](https://github.com/w24w24/javaSE/blob/master/Images/switch%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 1、当switch中的表达式和case 常量中的任何一个值匹配，就会去执行case中相应的代码块
 

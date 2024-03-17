@@ -172,7 +172,7 @@ class Person {
 
 示例3、使用一张内存图来解释发生了上述示例发生了什么
 
-![image-20240111200816537](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240111200816537.png)
+![image-20240111200816537](https://github.com/w24w24/javaSE/blob/master/Images/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%9C%BA%E5%88%B6.png)
 
 解析：示例1在调用示例2中的方法的时候发生了什么？
 

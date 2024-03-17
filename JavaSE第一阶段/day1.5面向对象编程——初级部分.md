@@ -159,7 +159,7 @@ class Cat {
 
 解析：用来更好的理解，对象在内存中布局是什么样子的
 
-![image-20240108215505604](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240108215505604.png)
+![image-20240108215505604](https://github.com/w24w24/javaSE/blob/master/Images/%E5%AF%B9%E8%B1%A1%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%AD%98%E5%9C%A8%E6%96%B9%E5%BC%8F.png)
 
 解析：内存解析
 
@@ -301,7 +301,7 @@ cat.color;
 
 类与对象在内存中的表示方法：
 
-![image-20240109203840102](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240109203840102.png)
+![image-20240109203840102](https://github.com/w24w24/javaSE/blob/master/Images/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B.png)
 
  解析：
 

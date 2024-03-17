@@ -307,7 +307,7 @@ System.out.println(n2); // 输出：10,2,3
 
 3、这里解释为什么值传递/值拷贝和引用传递/地址拷贝修改后，会不一样的【涉及到计算机内存中的栈和堆】
 
-![image-20231219215737745](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231219215737745.png)
+![image-20231219215737745](https://github.com/w24w24/javaSE/blob/master/Images/%E8%AE%A1%E7%AE%97%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%A0%88%E5%92%8C%E5%A0%86.png)
 
 解析：
 
@@ -323,7 +323,7 @@ System.out.println(n2); // 输出：10,2,3
 
 #### 【这个时候就使用到了数组拷贝，即只拷贝数组的元素值，和arr1的空间和地址是相互独立的，即使修改arr2，也不会影响arr1】
 
-1、new关键字的使用，因为使用new，就是在计算机内存中新开辟了一块空间和地址，将这个空间和地址赋值给到arr2！！这个空间和地址是独立的，不会影响到啊arr1![image-20231219222017118](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231219222017118.png)
+1、new关键字的使用，因为使用new，就是在计算机内存中新开辟了一块空间和地址，将这个空间和地址赋值给到arr2！！这个空间和地址是独立的，不会影响到啊arr1![image-20231219222017118](https://github.com/w24w24/javaSE/blob/master/Images/new%E6%89%A7%E8%A1%8C%E6%95%B0%E7%BB%84%E6%8B%B7%E8%B4%9D.png)
 
 
 
@@ -808,7 +808,7 @@ public class Test {
 
 1、二维数组在内存中的存在方式和表示方法
 
-![image-20231225224955706](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231225224955706.png)
+![image-20231225224955706](https://github.com/w24w24/javaSE/blob/master/Images/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95.png)
 
 解析：
 

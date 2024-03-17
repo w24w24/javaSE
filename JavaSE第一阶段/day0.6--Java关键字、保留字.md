@@ -6,9 +6,9 @@
 
 特点：关键字中的所有字母都为小写
 
-![image-20231120153326843](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231120153326843.png)
+![image-20231120153326843](https://github.com/w24w24/javaSE/blob/master/Images/Java%E5%85%B3%E9%94%AE%E5%AD%97.png)
 
-![image-20231120153409879](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231120153409879.png)
+![image-20231120153409879](https://github.com/w24w24/javaSE/blob/master/Images/java%E8%BF%90%E7%AE%97%E7%AC%A61.png)
 
 
 

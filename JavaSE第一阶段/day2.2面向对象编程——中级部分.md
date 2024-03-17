@@ -96,7 +96,7 @@ package com.hspedu;
 
 包示意图：
 
-![image-20240227193658778](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240227193658778.png)
+![image-20240227193658778](https://github.com/w24w24/javaSE/blob/master/Images/%E5%8C%85%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 
 

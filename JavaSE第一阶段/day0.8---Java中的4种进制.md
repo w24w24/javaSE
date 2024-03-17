@@ -165,7 +165,7 @@ int n4 = 0x10101; // 输出：
 
 案例：请将34转为二进制【oB100010】
 
-![image-20231120194849396](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20231120194849396.png)
+![image-20231120194849396](https://github.com/w24w24/javaSE/blob/master/Images/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.png)
 
 解析：注意，只写了0B100010是不对的，因为在电脑中，一个字节是8位，但是0B100010只有6位，0B是不算的，所以会自动添加两位，也就是两个00在高位作为补充，最终的答案是 0B00100010
 
