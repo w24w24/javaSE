@@ -97,7 +97,7 @@ public class testRun {
 
 示意图：
 
-![image-20240306201140867](https://github.com/w24w24/javaSE/blob/master/Images/%E7%BB%A7%E6%89%BF%E5%AD%90%E7%B1%BB%E4%B8%8E%E7%88%B6%E7%B1%BB%E5%85%B3%E7%B3%BB%E5%9B%BE%E3%80%81.png)
+![image-20240306201140867](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240306201140867.png)
 
 
 
@@ -646,7 +646,7 @@ public class Son1 extends Father {
 
 1、演示：在继承之后使用ctrl + H查看继承关系
 
-![image-20240311190954519](https://github.com/w24w24/javaSE/blob/master/Images/Object%E4%B8%8E%E5%85%B6%E5%AE%83%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB.png)
+![image-20240311190954519](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240311190954519.png)
 
 ## 八、父类构造器的调用不限于直接父类，将会一直往上追溯到Object类（顶级父类）【也就是说，程序的执行会从顶级父类开始执行】
 
@@ -752,7 +752,7 @@ class Son extends Father {
 
 内存图示例：
 
-![image-20240311211449080](https://github.com/w24w24/javaSE/blob/master/Images/%E7%BB%A7%E6%89%BF%E7%9A%84%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![image-20240311211449080](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240311211449080.png)
 
 #### <span style="color:red">解析：</span>
 
