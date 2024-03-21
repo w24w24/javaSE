@@ -276,7 +276,7 @@ class Person {
 }
 ```
 
-2、问题解决：<span style="color:red">将set的数据验证方式写在构造器中，这样Jvm在调用构造器的时候依旧可以使用的set方法进行数据验证</span>
+2、问题解决：<span style="color:red">在构造器中调用set方法，这样Jvm在调用构造器的时候依旧可以使用的set方法进行数据验证</span>
 
 ```java
 package com.Test;
