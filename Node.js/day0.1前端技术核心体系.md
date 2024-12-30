@@ -2,13 +2,13 @@
 
 #### 技术体系图：
 
-![image-20240812230627325](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240812230627325.png)
+https://github.com/w24w24/javaSE/blob/WeChatApp/%E6%8A%80%E6%9C%AF%E4%BD%93%E5%9B%BE.png
 
 
 
 #### 学习路径：
 
-**![image-20240812230744039](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240812230744039.png)**
+https://github.com/w24w24/javaSE/blob/WeChatApp/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E5%9B%BE.png
 
 
 
@@ -38,16 +38,15 @@
 
 1、开发服务器应用
 
-![image-20240812233422370](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240812233422370.png)
-
+https://github.com/w24w24/javaSE/blob/WeChatApp/%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BA%94%E7%94%A8.png
 
 
 2、开发工具类应用
 
-![image-20240812233521031](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240812233521031.png)
+https://github.com/w24w24/javaSE/blob/WeChatApp/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%BA%94%E7%94%A8.png
 
 
 
 3、开发桌面端应用
 
-![image-20240812233551469](C:\Users\谭磊\AppData\Roaming\Typora\typora-user-images\image-20240812233551469.png)
+https://github.com/w24w24/javaSE/blob/WeChatApp/%E5%BC%80%E5%8F%91%E6%A1%8C%E9%9D%A2%E7%AB%AF%E5%BA%94%E7%94%A8.png
